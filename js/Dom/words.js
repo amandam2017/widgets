@@ -3,6 +3,7 @@
 const sentenceElem = document.querySelector('.sentence');
 const addBtnElem = document.querySelector('.addBtn');
 const displaySentenceElem = document.querySelector('.displaySentence');
+const wordLengthElem = document.querySelector('.wordLength');
 
 const copysentence = 'Hello there! Do you know Amanda Maarman from Stellenbosch';
 
@@ -14,7 +15,6 @@ const addSentence = ()=>{
     const userWords = sentenceElem.value;
     if(userWords){
         displaySentenceElem.innerHTML = Factory.addWords(userWords);
-        console.log(displaySentenceElem.innerHTML);
     }
 
     let addedWords = userWords.split(" ");
@@ -24,13 +24,13 @@ const addSentence = ()=>{
             const wordsToHighlight = addedWords[i];
             if(wordsToHighlight.length>4){
                 highlighted += `<mark style= 'color:yellow'>${wordsToHighlight}</mark>`
-                // console.log(wordsToHighlight.length>4);
-                // return wordsToHighlight;
+
             }else{
                 highlighted += wordsToHighlight;
             }
 
             displaySentenceElem.innerHTML = highlighted;
+            wordLengthElem.innerHTML = addedWords.length;
             
     }
 
