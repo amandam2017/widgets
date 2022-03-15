@@ -6,29 +6,33 @@ const displaySentenceElem = document.querySelector('.displaySentence');
 
 const copysentence = 'Hello there! Do you know Amanda Maarman from Stellenbosch';
 
-
-//REFERENCE THE TEMPLATE
-
-//COMPILE THE TEMPLATE
-
 //INSTANTIATE FACTORY
 let Factory = Words(); 
 
 const addSentence = ()=>{
-    var addedSentences = [];
     
     const userWords = sentenceElem.value;
     if(userWords){
         displaySentenceElem.innerHTML = Factory.addWords(userWords);
         console.log(displaySentenceElem.innerHTML);
+    }
 
-        addedSentences.push(displaySentenceElem.innerHTML);
-        addedSentences = displaySentenceElem.innerHTML.split();
+    let addedWords = userWords.split(" ");
 
-        console.log(addedSentences = displaySentenceElem.innerHTML.split());
+    let highlighted = '';
+        for (let i = 0; i < addedWords.length; i++) {
+            const wordsToHighlight = addedWords[i];
+            if(wordsToHighlight.length>4){
+                highlighted += `<mark style= 'color:yellow'>${wordsToHighlight}</mark>`
+                // console.log(wordsToHighlight.length>4);
+                // return wordsToHighlight;
+            }else{
+                highlighted += wordsToHighlight;
+            }
 
-    
-    } 
+            displaySentenceElem.innerHTML = highlighted;
+            
+    }
 
 }
 
