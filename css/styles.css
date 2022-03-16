@@ -8,3 +8,11 @@ body{
     padding: 15px;
     margin-bottom: 25px;
 }
+
+#checkbox{
+    width: 30px;
+    height: 30px;
+}
+p{
+    text-emphasis-style:inherit;
+}

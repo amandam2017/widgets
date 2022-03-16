@@ -10,29 +10,19 @@
 </head>
 <body>
     <h1 class="text-center">Words Widget</h1>
+    <p class="text-center">Enter a sentence of five or more words and click analyze button.
+        You will see all the words with characters more than 5 highlighted yellow.</p>
 
     <div class="container">
         <div class="row">
             <div class="widget__section widget__section--one">
-                <p>Enter a sentence of five or more words and click analyze button.
-                    You will see all the words with characters more than 5 highlighted yellow.</p>
-                <input type="text" class="sentence" placeholder="this sentence have more than five words">
-                <button class="addBtn">Analyze</button>
+                    <input type="text" class="sentence">
+                    <button class="addBtn">Analyze</button>
+                    <input type="checkbox" id="checkbox" class="checkbox" name="checkbox" value="5">
                 <ul class="displaySentence"></ul>
                 <span class="wordLength"></span>
-                <div class="check-box">
-                    <input type="checkbox" id="checkbox" class="checkbox" name="checkbox" value="5">
-                    <label>Hide word with less than five characters</label>
-                    <div class="shortWords"></div>
-                </div>
-            </div>
-        <!-- <div class="widget__section widget__setion--two">
-            <div class="check-box">
-                <input type="checkbox" id="checkbox" class="checkbox" name="checkbox" value="5">
-                <label>Hide word with less than five characters</label>
                 <div class="shortWords"></div>
             </div>
-        </div> -->
         </div>
         <div class="row">
             <div class="widget__section widget__section--three"></div>

@@ -21,10 +21,6 @@ let highlighted = '';
 
     const userWords = sentenceElem.value;
 
-    if(userWords){
-        displaySentenceElem.innerHTML = Factory.addWords(userWords);
-    }
-
     // split is to split each word in a sentence and return an array of words
     let addedWords = userWords.split(" ");
 
@@ -49,22 +45,22 @@ let highlighted = '';
 }
 
 
-const longestWord = ()=>{
-    let changeHighlighted = '';
-    let longWrd = '';
-    const userWords = sentenceElem.value;
+// const longestWord = ()=>{
+    // let changeHighlighted = '';
+    // let longWrd = '';
+    // const userWords = sentenceElem.value;
 
-    // split is to split each word in a sentence and return an array of words
-    let addedWords = userWords.split(" ");
-    const longestWord = addedWords.reduce((longestWord, currentWord) =>
-    currentWord.length > longestWord.length ? currentWord: longestWord, '');
-    console.log(longestWord);
-}
+    // // split is to split each word in a sentence and return an array of words
+    // let addedWords = userWords.split(" ");
+    // const longestWord = addedWords.reduce((longestWord, currentWord) =>
+    // currentWord.length > longestWord.length ? currentWord: longestWord, '');
+    // console.log(longestWord);
+// }
 
 const hideAndHighlight =()=>{
     
     let changeHighlighted = '';
-    let longestWord = '';
+    let highLightLongest = '';
     const userWords = sentenceElem.value;
 
     // split is to split each word in a sentence and return an array of words
@@ -75,18 +71,30 @@ const hideAndHighlight =()=>{
             if(userWords){
                 shortWordsElem.innerHTML = Factory.addWords(userWords);
             }
+
+            const longestWord = addedWords.reduce((longestWord, currentWord) =>
+            currentWord.length > longestWord.length ? currentWord: longestWord, '');
             if((checkboxElem.checked === true)){
-                if((wordsToHighlight.length>5)){
+                if((wordsToHighlight.length>5) && (longestWord.length>wordsToHighlight.length)){
                     changeHighlighted += `<mark style= 'background-color:yellow'>${wordsToHighlight}</mark>`
-                    if((changeHighlighted.length>changeHighlighted))
-                    longestWord += `<mark style= 'background-color:blue'>${wordsToHighlight}</mark>`
+                    highLightLongest += `<mark style= 'background-color:blue'>${longestWord}</mark>` 
+
+                    // if((longestWord.length>wordsToHighlight.length)){
+                    //     highLightLongest += `<mark style= 'background-color:blue'>${longestWord}</mark>` 
+                    //     console.log(highLightLongest);
+  
+                    // }
                 }
             }
             else{
-                changeHighlighted += " ";
+                changeHighlighted += wordsToHighlight + " ";
+                // highLightLongest += longestWord + " ";
+
             }
 
-            shortWordsElem.innerHTML = changeHighlighted;
+            shortWordsElem.innerHTML = `${changeHighlighted} ${highLightLongest}`;
+            // shortWordsElem.innerHTML = highLightLongest;
+
             
     }
     
