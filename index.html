@@ -12,11 +12,27 @@
     <h1 class="text-center">Words Widget</h1>
 
     <div class="container">
-        <label>Enter a sentence of five or more words.</label>
-        <input type="text" class="sentence" placeholder="this sentence have more than five words">
-        <button class="addBtn">ADD</button>
-        <ul class="displaySentence"></ul>
-        <span class="wordLength"></span>
+        <div class="row">
+            <div class="widget__section--one">
+                <label>Enter a sentence of five or more words.</label>
+                <input type="text" class="sentence" placeholder="this sentence have more than five words">
+                <button class="addBtn">ADD</button>
+                <ul class="displaySentence"></ul>
+                <span class="wordLength"></span>
+            </div>
+        <div class="widget__setion--two">
+            <div class="check-box">
+                <input type="checkbox" id="lessThanFive" name="lessThanFive" value="less than 5">
+                <label>Hide word with less than five characters</label>
+                <button>HIDE</button>
+            </div>
+        </div>
+        </div>
+        <div class="row">
+            <div class="widget__section--three"></div>
+            <div class="widget__section--four"></div>
+        </div>
+        
     </div>
 
 <script src="js/Factories/wordsff.js"></script>    
