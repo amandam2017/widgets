@@ -29,10 +29,7 @@ const addSentence = (option)=>{
 
         for (let i = 0; i < addedWords.length; i++) {
             const wordsToHighlight = addedWords[i];
-            // tryimg to hide less than 5 words
-            if(option === 'less'){
-                return 
-            }
+
             if(wordsToHighlight.length>4){
                 highlighted += `<mark style= 'background-color:yellow'>${wordsToHighlight}</mark>`
 
