@@ -1,3 +1,8 @@
+body{
+    background-color: #F8F4F9;
+    color: #011936;
+}
+
 .widget__section{
     border: 2px solid;
     padding: 15px;
