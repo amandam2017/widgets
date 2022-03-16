@@ -48,9 +48,23 @@ let highlighted = '';
 
 }
 
+
+const longestWord = ()=>{
+    let changeHighlighted = '';
+    let longWrd = '';
+    const userWords = sentenceElem.value;
+
+    // split is to split each word in a sentence and return an array of words
+    let addedWords = userWords.split(" ");
+    const longestWord = addedWords.reduce((longestWord, currentWord) =>
+    currentWord.length > longestWord.length ? currentWord: longestWord, '');
+    console.log(longestWord);
+}
+
 const hideAndHighlight =()=>{
     
     let changeHighlighted = '';
+    let longestWord = '';
     const userWords = sentenceElem.value;
 
     // split is to split each word in a sentence and return an array of words
@@ -61,8 +75,12 @@ const hideAndHighlight =()=>{
             if(userWords){
                 shortWordsElem.innerHTML = Factory.addWords(userWords);
             }
-            if((checkboxElem.checked === true) && (wordsToHighlight.length>5)){
-                changeHighlighted += `<mark style= 'background-color:yellow'>${wordsToHighlight}</mark>`
+            if((checkboxElem.checked === true)){
+                if((wordsToHighlight.length>5)){
+                    changeHighlighted += `<mark style= 'background-color:yellow'>${wordsToHighlight}</mark>`
+                    if((changeHighlighted.length>changeHighlighted))
+                    longestWord += `<mark style= 'background-color:blue'>${wordsToHighlight}</mark>`
+                }
             }
             else{
                 changeHighlighted += " ";
