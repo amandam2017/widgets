@@ -21,6 +21,10 @@ let highlighted = '';
 
     const userWords = sentenceElem.value;
 
+    // if(userWords){
+    //     shortWordsElem.innerHTML = Factory.addWords(userWords);
+    // }
+
     // split is to split each word in a sentence and return an array of words
     let addedWords = userWords.split(" ");
 
@@ -44,19 +48,6 @@ let highlighted = '';
 
 }
 
-
-// const longestWord = ()=>{
-    // let changeHighlighted = '';
-    // let longWrd = '';
-    // const userWords = sentenceElem.value;
-
-    // // split is to split each word in a sentence and return an array of words
-    // let addedWords = userWords.split(" ");
-    // const longestWord = addedWords.reduce((longestWord, currentWord) =>
-    // currentWord.length > longestWord.length ? currentWord: longestWord, '');
-    // console.log(longestWord);
-// }
-
 const hideAndHighlight =()=>{
     
     let changeHighlighted = '';
@@ -68,38 +59,29 @@ const hideAndHighlight =()=>{
 
         for (let i = 0; i < addedWords.length; i++) {
             const wordsToHighlight = addedWords[i];
-            if(userWords){
-                shortWordsElem.innerHTML = Factory.addWords(userWords);
-            }
+            // if(userWords){
+            //     shortWordsElem.innerHTML = Factory.addWords(userWords);
+            // }
 
             const longestWord = addedWords.reduce((longestWord, currentWord) =>
             currentWord.length > longestWord.length ? currentWord: longestWord, '');
+            
             if((checkboxElem.checked === true)){
                 if((wordsToHighlight.length>5) && (longestWord.length>wordsToHighlight.length)){
                     changeHighlighted += `<mark style= 'background-color:yellow'>${wordsToHighlight}</mark>`
                     highLightLongest += `<mark style= 'background-color:blue'>${longestWord}</mark>` 
-
-                    // if((longestWord.length>wordsToHighlight.length)){
-                    //     highLightLongest += `<mark style= 'background-color:blue'>${longestWord}</mark>` 
-                    //     console.log(highLightLongest);
-  
-                    // }
                 }
             }
             else{
                 changeHighlighted += wordsToHighlight + " ";
-                // highLightLongest += longestWord + " ";
+                highLightLongest += " ";
 
             }
-
-            shortWordsElem.innerHTML = `${changeHighlighted} ${highLightLongest}`;
-            // shortWordsElem.innerHTML = highLightLongest;
-
-            
+            shortWordsElem.innerHTML = `${changeHighlighted} ${highLightLongest}`;       
     }
     
 }
 
 // add event listener on btn to do something onclick
-addBtnElem.addEventListener('click', addSentence);
+addBtnElem.addEventListener('keyup', addSentence);
 checkboxElem.addEventListener('click', hideAndHighlight);
