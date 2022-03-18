@@ -12,6 +12,7 @@ const shortWordsElem = document.querySelector('.shortWords');
 const longwordsElem = document.querySelector('.longwords');
 
 const copysentence = 'Hello there! Do you know Amanda Maarman from Stellenbosch';
+const twowords = 'my name is amandamaarman from stellenbosch. My brother;s name is asandamaarman';
 
 //INSTANTIATE FACTORY
 let Factory = Words(); 
@@ -19,21 +20,25 @@ let Factory = Words();
 const analyze = ()=>{
     
 let highlighted = '';
+let highLightLongest = '';
+// let long = longest();
 
-    const userWords = sentenceElem.value;
+const userWords = sentenceElem.value;
+let long = Factory.LongWord(userWords)
+
 
     // split is to split each word in a sentence and return an array of words
     let addedWords = userWords.split(" ");
 
         for (let i = 0; i < addedWords.length; i++) {
             const wordsToHighlight = addedWords[i];
-            if(userWords){
-                shortWordsElem.innerHTML = Factory.addWords(userWords);
-            }
+
 
             if(wordsToHighlight.length>4){
                 highlighted += `<mark style= 'background-color:yellow'>${wordsToHighlight}</mark>`
+                
             }
+
             else{
                 highlighted += wordsToHighlight + " ";
             }
@@ -43,48 +48,9 @@ let highlighted = '';
             
     }
 
-}
+    highLightLongest += `<mark style= 'background-color:blue'>${long}</mark>`
+    longwordsElem.innerHTML = `the long words are: ${highLightLongest}`;
 
-const longest = ()=>{
-    const userWords = sentenceElem.value;
-
-    let addedWords = userWords.split(" ");
-    let longestword = addedWords[0].length;
-    let wordLong = ''
-
-    for (let i = 0; i < addedWords.length; i++) {
-        const eachWord = addedWords[i];
-        if(eachWord.length>longestword){
-            longestword = eachWord.length;
-            wordLong  = eachWord;
-        }
-    }
-    console.log(wordLong);
-    return wordLong;
-}
-
-const longlongestest = ()=>{
-    const userWords = sentenceElem.value;
-
-    let addedWords = userWords.split(" ");
-    let longestword = addedWords[0].length;
-    let lolongest = addedWords[0].length
-    let wordLong = ''
-    let allAlong = '';
-
-    for (let i = 0; i < addedWords.length; i++) {
-        const eachWord = addedWords[i];
-        if((eachWord.length>longestword) || (eachWord.length>lolongest)){
-            longestword = eachWord.length;
-            lolongest = eachWord.length;
-
-            wordLong  = eachWord;
-            allAlong = eachWord
-        }
-    }
-    console.log(`${allAlong} ${wordLong}`);
-
-    return `${wordLong} ${allAlong}`;
 }
 
 const hideAndHighlight =()=>{
@@ -92,20 +58,22 @@ const hideAndHighlight =()=>{
     shortWordsElem.innerHTML = '';
     
     let changeHighlighted = '';
-    let highLightLongest = '';
+    // let highLightLongest = '';
     const userWords = sentenceElem.value;
 
     // split is to split each word in a sentence and return an array of words
     let addedWords = userWords.split(" ");
-    let long = longest();
+    // let long = longest();
 
         for (let i = 0; i < addedWords.length; i++) {
             const wordsToHighlight = addedWords[i];
 
             if((checkboxElem.checked === true)){
-                if((wordsToHighlight.length>5)){
-                    changeHighlighted += `<mark style= 'background-color:yellow'>${wordsToHighlight}</mark>`
-                }
+                    if((wordsToHighlight.length>5)){
+                        changeHighlighted += `<mark style= 'background-color:yellow'>${wordsToHighlight}</mark>`
+                        // highLightLongest += `<mark style= 'background-color:blue'>${long}</mark>`
+
+                    }
             }
             else{
                 changeHighlighted += wordsToHighlight + " ";
@@ -115,9 +83,9 @@ const hideAndHighlight =()=>{
             shortWordsElem.innerHTML = `${changeHighlighted}`
             
     }
-    highLightLongest += `<mark style= 'background-color:blue'>${long}</mark>`
+    // highLightLongest += `<mark style= 'background-color:blue'>${long}</mark>`
 
-    longwordsElem.innerHTML = `the long words are: ${highLightLongest}`;
+    // longwordsElem.innerHTML = `the long words are: ${highLightLongest}`;
 
     
 }
