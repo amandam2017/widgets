@@ -12,7 +12,7 @@ const shortWordsElem = document.querySelector('.shortWords');
 const longwordsElem = document.querySelector('.longwords');
 
 const copysentence = 'Hello there! Do you know Amanda Maarman from Stellenbosch';
-const twowords = 'my name is amandamaarman from stellenbosch. My brother;s name is asandamaarman';
+const twowords = 'my name is amandamaarman from stellenbosch. My brother name is asandamaarman';
 
 //INSTANTIATE FACTORY
 let Factory = Words(); 
@@ -24,7 +24,8 @@ let highLightLongest = '';
 // let long = longest();
 
 const userWords = sentenceElem.value;
-let long = Factory.LongWord(userWords)
+let long = Factory.LongWord(userWords);
+console.log(long);
 
 
     // split is to split each word in a sentence and return an array of words
@@ -52,6 +53,27 @@ let long = Factory.LongWord(userWords)
     longwordsElem.innerHTML = `the long words are: ${highLightLongest}`;
 
 }
+
+// push long word into an array
+// get the long word in a factory function
+
+// const longest = ()=>{
+//     const userWords = sentenceElem.value;
+
+//     let addedWords = userWords.split(" ");
+//     let longestword = addedWords[0].length;
+//     let wordLong = ''
+
+//     for (let i = 0; i < addedWords.length; i++) {
+//         const eachWord = addedWords[i];
+//         if(eachWord.length>longestword){
+//             longestword = eachWord.length;
+//             wordLong  = eachWord;
+//         }
+//     }
+//     console.log(wordLong);
+//     return wordLong;
+// }
 
 const hideAndHighlight =()=>{
 
