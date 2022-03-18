@@ -9,21 +9,18 @@ const wordLengthElem = document.querySelector('.wordLength');
 
 const checkboxElem = document.getElementById('checkbox');
 const shortWordsElem = document.querySelector('.shortWords');
+const longwordsElem = document.querySelector('.longwords');
 
 const copysentence = 'Hello there! Do you know Amanda Maarman from Stellenbosch';
 
 //INSTANTIATE FACTORY
 let Factory = Words(); 
 
-const addSentence = ()=>{
+const analyze = ()=>{
     
 let highlighted = '';
 
     const userWords = sentenceElem.value;
-
-    // if(userWords){
-    //     shortWordsElem.innerHTML = Factory.addWords(userWords);
-    // }
 
     // split is to split each word in a sentence and return an array of words
     let addedWords = userWords.split(" ");
@@ -48,7 +45,51 @@ let highlighted = '';
 
 }
 
+const longest = ()=>{
+    const userWords = sentenceElem.value;
+
+    let addedWords = userWords.split(" ");
+    let longestword = addedWords[0].length;
+    let wordLong = ''
+
+    for (let i = 0; i < addedWords.length; i++) {
+        const eachWord = addedWords[i];
+        if(eachWord.length>longestword){
+            longestword = eachWord.length;
+            wordLong  = eachWord;
+        }
+    }
+    console.log(wordLong);
+    return wordLong;
+}
+
+const longlongestest = ()=>{
+    const userWords = sentenceElem.value;
+
+    let addedWords = userWords.split(" ");
+    let longestword = addedWords[0].length;
+    let lolongest = addedWords[0].length
+    let wordLong = ''
+    let allAlong = '';
+
+    for (let i = 0; i < addedWords.length; i++) {
+        const eachWord = addedWords[i];
+        if((eachWord.length>longestword) || (eachWord.length>lolongest)){
+            longestword = eachWord.length;
+            lolongest = eachWord.length;
+
+            wordLong  = eachWord;
+            allAlong = eachWord
+        }
+    }
+    console.log(`${allAlong} ${wordLong}`);
+
+    return `${wordLong} ${allAlong}`;
+}
+
 const hideAndHighlight =()=>{
+
+    shortWordsElem.innerHTML = '';
     
     let changeHighlighted = '';
     let highLightLongest = '';
@@ -56,32 +97,31 @@ const hideAndHighlight =()=>{
 
     // split is to split each word in a sentence and return an array of words
     let addedWords = userWords.split(" ");
+    let long = longest();
 
         for (let i = 0; i < addedWords.length; i++) {
             const wordsToHighlight = addedWords[i];
-            // if(userWords){
-            //     shortWordsElem.innerHTML = Factory.addWords(userWords);
-            // }
 
-            const longestWord = addedWords.reduce((longestWord, currentWord) =>
-            currentWord.length > longestWord.length ? currentWord: longestWord, '');
-            
             if((checkboxElem.checked === true)){
-                if((wordsToHighlight.length>5) && (longestWord.length>wordsToHighlight.length)){
+                if((wordsToHighlight.length>5)){
                     changeHighlighted += `<mark style= 'background-color:yellow'>${wordsToHighlight}</mark>`
-                    highLightLongest += `<mark style= 'background-color:blue'>${longestWord}</mark>` 
                 }
             }
             else{
                 changeHighlighted += wordsToHighlight + " ";
-                highLightLongest += " ";
-
+                highLightLongest = " ";
             }
-            shortWordsElem.innerHTML = `${changeHighlighted} ${highLightLongest}`;       
+
+            shortWordsElem.innerHTML = `${changeHighlighted}`
+            
     }
+    highLightLongest += `<mark style= 'background-color:blue'>${long}</mark>`
+
+    longwordsElem.innerHTML = `the long words are: ${highLightLongest}`;
+
     
 }
 
 // add event listener on btn to do something onclick
-addBtnElem.addEventListener('keyup', addSentence);
+addBtnElem.addEventListener('click', analyze);
 checkboxElem.addEventListener('click', hideAndHighlight);

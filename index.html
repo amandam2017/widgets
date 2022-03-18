@@ -10,24 +10,19 @@
 </head>
 <body>
     <h1 class="text-center">Words Widget</h1>
-    <p class="text-center">Enter a sentence of five or more words and click analyze button.
-        You will see all the words with characters more than 5 highlighted yellow.</p>
+    <p class="text-center">Please enter a sentence and we will analyze for you.</p>
 
     <div class="container">
         <div class="row">
             <div class="widget__section widget__section--one">
-                    <input type="text" class="sentence" onkeyup="addSentence()">
+                    <input type="text" class="sentence">
                     <button class="addBtn">Analyze</button>
                     <input type="checkbox" id="checkbox" class="checkbox" name="checkbox" value="5">
                 <ul class="displaySentence"></ul>
                 <span class="wordLength"></span>
                 <div class="shortWords"></div>
-                <div class="longestword"></div>
+                <div class="longwords"></div>
             </div>
-        </div>
-        <div class="row">
-            <div class="widget__section widget__section--three"></div>
-            <div class="widget__section widget__section--four"></div>
         </div>
         
     </div>
