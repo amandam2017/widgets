@@ -24,19 +24,27 @@ let highLightLongest = '';
 // let long = longest();
 
 const userWords = sentenceElem.value;
+let addedWords = userWords.split(" ");
+
 let long = Factory.LongWord(userWords);
-console.log(long);
 
+    // decoupled word logic words
+    const wordList = addedWords.map(word=>{
+        return{
+            word,
+            length: word.length,
+            type: word.length>4 ? "longer": ""
+        }
+    })
 
-    // split is to split each word in a sentence and return an array of words
-    let addedWords = userWords.split(" ");
-
-        for (let i = 0; i < addedWords.length; i++) {
-            const wordsToHighlight = addedWords[i];
+        for (let i = 0; i < wordList.length; i++) {
+            let wordsToHighlight = wordList[i];
+            wordsToHighlight =  wordsToHighlight.word;
+            console.log(wordsToHighlight);
 
 
             if(wordsToHighlight.length>4){
-                highlighted += `<mark style= 'background-color:yellow'>${wordsToHighlight}</mark>`
+                highlighted +=  `<span class="greaterThanFour">${wordsToHighlight + " "}</span>`
                 
             }
 
@@ -45,56 +53,31 @@ console.log(long);
             }
 
             shortWordsElem.innerHTML = highlighted;
-            wordLengthElem.innerHTML = `Your sentence have: ${addedWords.length} words.`;
+            wordLengthElem.innerHTML = `Your sentence have: ${wordList.length} words.`;
             
     }
 
-    highLightLongest += `<mark style= 'background-color:blue'>${long}</mark>`
+    highLightLongest += `<span class="longest">${long}</span>`
     longwordsElem.innerHTML = `the long words are: ${highLightLongest}`;
 
 }
 
-// push long word into an array
-// get the long word in a factory function
 
-// const longest = ()=>{
-//     const userWords = sentenceElem.value;
-
-//     let addedWords = userWords.split(" ");
-//     let longestword = addedWords[0].length;
-//     let wordLong = ''
-
-//     for (let i = 0; i < addedWords.length; i++) {
-//         const eachWord = addedWords[i];
-//         if(eachWord.length>longestword){
-//             longestword = eachWord.length;
-//             wordLong  = eachWord;
-//         }
-//     }
-//     console.log(wordLong);
-//     return wordLong;
-// }
 
 const hideAndHighlight =()=>{
+    const userWords = sentenceElem.value;
+    let addedWords = userWords.split(" ");
 
     shortWordsElem.innerHTML = '';
     
     let changeHighlighted = '';
-    // let highLightLongest = '';
-    const userWords = sentenceElem.value;
-
-    // split is to split each word in a sentence and return an array of words
-    let addedWords = userWords.split(" ");
-    // let long = longest();
 
         for (let i = 0; i < addedWords.length; i++) {
             const wordsToHighlight = addedWords[i];
 
             if((checkboxElem.checked === true)){
                     if((wordsToHighlight.length>5)){
-                        changeHighlighted += `<mark style= 'background-color:yellow'>${wordsToHighlight}</mark>`
-                        // highLightLongest += `<mark style= 'background-color:blue'>${long}</mark>`
-
+                        changeHighlighted += `<span class="greaterThanFive">${wordsToHighlight + " "}</span>`
                     }
             }
             else{
@@ -104,12 +87,7 @@ const hideAndHighlight =()=>{
 
             shortWordsElem.innerHTML = `${changeHighlighted}`
             
-    }
-    // highLightLongest += `<mark style= 'background-color:blue'>${long}</mark>`
-
-    // longwordsElem.innerHTML = `the long words are: ${highLightLongest}`;
-
-    
+    }    
 }
 
 // add event listener on btn to do something onclick

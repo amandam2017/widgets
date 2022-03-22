@@ -14,33 +14,24 @@ const Words = () =>{
     const LongWord =(userSentence)=>{
         let splitSentenct = userSentence.split(" ");
         let longwordOne = '';
-        let longest = '';
+        let longestWords = '';
         for (let i = 0; i < splitSentenct.length; i++) {
             const element = splitSentenct[i];
             if(element.length>longwordOne.length){
                 longwordOne = element;
+                console.log(longwordOne);
 
             }    
         }
 
-        let allwords = [];
+        const sameLengthWords = splitSentenct.filter(word=> word.length === longwordOne.length)
+        console.log(sameLengthWords);
 
-        for (let index = 0; index < splitSentenct.length; index++) {
-            const element = splitSentenct[index];
-            if(element.length>longest.length){
-                longest = element;
-                // allwords.push(longest);
-                // console.log(allwords);
-                JSON.stringify(allwords);
-            }
-            if(longest === element){
-                allwords.push(longest)
-                console.log(allwords);
-            }           
-        }
+        return sameLengthWords;
 
-        return allwords;
 
+    // push long word into an array
+    // get the long word in a factory function
 
     }
 

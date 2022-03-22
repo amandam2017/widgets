@@ -4,6 +4,8 @@ body{
 }
 
 .widget__section{
+    width: 850px;
+    margin: auto;
     border: 2px solid;
     padding: 15px;
     margin-bottom: 25px;
@@ -15,4 +17,18 @@ body{
 }
 p{
     text-emphasis-style:inherit;
+}
+
+/*highlight words */
+/* greater than 4 */
+.greaterThanFour{
+    background-color: yellow;
+}
+
+.greaterThanFive{
+    background-color: crimson;
+}
+/* greater than all */
+.longest{
+    background-color: aqua;
 }
