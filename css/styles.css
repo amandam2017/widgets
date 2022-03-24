@@ -11,24 +11,29 @@ body{
     margin-bottom: 25px;
 }
 
+.widget__inner--container{
+    display: flex;
+}
+
 #checkbox{
-    width: 30px;
-    height: 30px;
+    width: 60px;
+    height: 45px;
 }
 p{
     text-emphasis-style:inherit;
 }
 
 /*highlight words */
-/* greater than 4 */
+
 .greaterThanFour{
-    background-color: yellow;
+    background-color: #F2B880;
 }
 
 .greaterThanFive{
-    background-color: crimson;
+    background-color: #c98686;
 }
-/* greater than all */
+
 .longest{
-    background-color: aqua;
+    background-color: #966b9d;
+
 }

@@ -21,44 +21,44 @@ const analyze = ()=>{
     
 let highlighted = '';
 let highLightLongest = '';
-// let long = longest();
 
-const userWords = sentenceElem.value;
+let userWords = sentenceElem.value;
 let addedWords = userWords.split(" ");
+// decupling - Learn to change my array of strings to be an array of objects
+const sentence = addedWords.map(word=>{
+    return{
+        word,
+        length: word.length,
+        type: word.length >4 ? "greaterThanFour":" "
+    }
+})
 
-let long = Factory.LongWord(userWords);
+console.log(sentence);
 
-    // decoupled word logic words
-    const wordList = addedWords.map(word=>{
-        return{
-            word,
-            length: word.length,
-            type: word.length>4 ? "longer": ""
-        }
-    })
+let longest = Factory.LongWord(userWords);
 
-        for (let i = 0; i < wordList.length; i++) {
-            let wordsToHighlight = wordList[i];
-            wordsToHighlight =  wordsToHighlight.word;
-            console.log(wordsToHighlight);
+        for (let i = 0; i < sentence.length; i++) {
+            let wordCharacter = sentence[i];
+            wordCharacter =  wordCharacter.word;
+            console.log(wordCharacter)
 
-
-            if(wordsToHighlight.length>4){
-                highlighted +=  `<span class="greaterThanFour">${wordsToHighlight + " "}</span>`
-                
+            if(wordCharacter.length>4){
+                if(longest.includes(wordCharacter)){
+                    highlighted += `<mark style="background-color:yellow">${wordCharacter}
+                    </mark>`
+                }else{
+                    highlighted += `<mark style="background-color:green">${wordCharacter}</mark>`
+                }                
             }
 
             else{
-                highlighted += wordsToHighlight + " ";
+                highlighted += wordCharacter + " ";
             }
 
-            shortWordsElem.innerHTML = highlighted;
-            wordLengthElem.innerHTML = `Your sentence have: ${wordList.length} words.`;
+            displaySentenceElem.innerHTML = highlighted;
+            wordLengthElem.innerHTML = `Your sentence have: ${addedWords.length} words.`;
             
     }
-
-    highLightLongest += `<span class="longest">${long}</span>`
-    longwordsElem.innerHTML = `the long words are: ${highLightLongest}`;
 
 }
 
@@ -73,15 +73,15 @@ const hideAndHighlight =()=>{
     let changeHighlighted = '';
 
         for (let i = 0; i < addedWords.length; i++) {
-            const wordsToHighlight = addedWords[i];
+            const wordCharacter = addedWords[i];
 
             if((checkboxElem.checked === true)){
-                    if((wordsToHighlight.length>5)){
-                        changeHighlighted += `<span class="greaterThanFive">${wordsToHighlight + " "}</span>`
+                    if((wordCharacter.length>5)){
+                        changeHighlighted += `<span class="greaterThanFive">${wordCharacter + " "}</span>`
                     }
             }
             else{
-                changeHighlighted += wordsToHighlight + " ";
+                changeHighlighted += wordCharacter + " ";
                 highLightLongest = " ";
             }
 
