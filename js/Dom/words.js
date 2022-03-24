@@ -44,10 +44,10 @@ let longest = Factory.LongWord(userWords);
 
             if(wordCharacter.length>4){
                 if(longest.includes(wordCharacter)){
-                    highlighted += `<mark style="background-color:yellow">${wordCharacter}
-                    </mark>`
+                    highlighted += `<span class="longest">${wordCharacter}
+                    </span>`
                 }else{
-                    highlighted += `<mark style="background-color:green">${wordCharacter}</mark>`
+                    highlighted += `<span class="greaterThanFour">${wordCharacter}</span>`
                 }                
             }
 
@@ -65,10 +65,14 @@ let longest = Factory.LongWord(userWords);
 
 
 const hideAndHighlight =()=>{
+
     const userWords = sentenceElem.value;
     let addedWords = userWords.split(" ");
 
-    shortWordsElem.innerHTML = '';
+let longest = Factory.LongWord(userWords);
+
+
+    displaySentenceElem.innerHTML = '';
     
     let changeHighlighted = '';
 
@@ -77,7 +81,14 @@ const hideAndHighlight =()=>{
 
             if((checkboxElem.checked === true)){
                     if((wordCharacter.length>5)){
+                        if(longest.includes(wordCharacter)){
+                            changeHighlighted += `<span class="longest">${wordCharacter}</span>`
+
+                        }else{
                         changeHighlighted += `<span class="greaterThanFive">${wordCharacter + " "}</span>`
+
+                        }
+
                     }
             }
             else{
@@ -85,9 +96,9 @@ const hideAndHighlight =()=>{
                 highLightLongest = " ";
             }
 
-            shortWordsElem.innerHTML = `${changeHighlighted}`
+            displaySentenceElem.innerHTML = `${changeHighlighted}`
             
-    }    
+    } 
 }
 
 // add event listener on btn to do something onclick
