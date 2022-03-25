@@ -20,7 +20,6 @@ let Factory = Words();
 const analyze = ()=>{
     
 let highlighted = '';
-let highLightLongest = '';
 
 let userWords = sentenceElem.value;
 let addedWords = userWords.split(" ");
@@ -63,13 +62,12 @@ let longest = Factory.LongWord(userWords);
 }
 
 
-
 const hideAndHighlight =()=>{
 
     const userWords = sentenceElem.value;
     let addedWords = userWords.split(" ");
 
-let longest = Factory.LongWord(userWords);
+    let originalSentence = analyze();
 
 
     displaySentenceElem.innerHTML = '';
@@ -81,19 +79,12 @@ let longest = Factory.LongWord(userWords);
 
             if((checkboxElem.checked === true)){
                     if((wordCharacter.length>5)){
-                        if(longest.includes(wordCharacter)){
-                            changeHighlighted += `<span class="longest">${wordCharacter}</span>`
-
-                        }else{
                         changeHighlighted += `<span class="greaterThanFive">${wordCharacter + " "}</span>`
-
-                        }
 
                     }
             }
             else{
-                changeHighlighted += wordCharacter + " ";
-                highLightLongest = " ";
+                wordCharacter += analyze();
             }
 
             displaySentenceElem.innerHTML = `${changeHighlighted}`
