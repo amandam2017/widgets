@@ -5,7 +5,7 @@
 const sentenceElem = document.querySelector('.sentence');
 const addBtnElem = document.querySelector('.addBtn');
 const displaySentenceElem = document.querySelector('.displaySentence');
-const wordLengthElem = document.querySelector('.wordLength');
+const wordsLengthElem = document.querySelector('.wordLength');
 
 const checkboxElem = document.getElementById('checkbox');
 const shortWordsElem = document.querySelector('.shortWords');
@@ -18,59 +18,48 @@ const twowords = 'my name is amandamaarman from stellenbosch. My brother name is
 let Factory = Words(); 
 
 const analyze = ()=>{
-    
-let highlighted = '';
 
-let userWords = sentenceElem.value;
-let addedWords = userWords.split(" ");
-// decupling - Learn to change my array of strings to be an array of objects
-const sentence = addedWords.map(word=>{
-    return{
-        word,
-        length: word.length,
-        type: word.length >4 ? "greaterThanFour":" "
-    }
-})
+    let sentence = sentenceElem.value;
 
-console.log(sentence);
+    const words = Factory.showWords(sentence);
+    // console.log(words);
+    const longest = Factory.LongWord(words);
+    console.log(longest);
 
-let longest = Factory.LongWord(userWords);
+    displaySentenceElem.innerHTML = "";
 
-        for (let i = 0; i < sentence.length; i++) {
-            let wordCharacter = sentence[i];
-            wordCharacter =  wordCharacter.word;
-            console.log(wordCharacter)
+    // loop over words 
+    // for each word append an element on the dom 
+    // use the type attribute to add a class name which will highlight the appropriate words
+    words.forEach(word => {
+        const wordsElem = document.createElement("span");
+        wordsElem.innerHTML = word.word + " ";
+        wordsElem.classList.add("word")
+        if(word.type.trim()){
+            wordsElem.classList.add(word.type);
 
-            if(wordCharacter.length>4){
-                if(longest.includes(wordCharacter)){
-                    highlighted += `<span class="longest">${wordCharacter}
-                    </span>`
-                }else{
-                    highlighted += `<span class="greaterThanFour">${wordCharacter}</span>`
-                }                
-            }
+            // wordsElem.classList.add("longest");
+        }
+        // else{
 
-            else{
-                highlighted += wordCharacter + " ";
-            }
+        // }
 
-            displaySentenceElem.innerHTML = highlighted;
-            wordLengthElem.innerHTML = `Your sentence have: ${addedWords.length} words.`;
-            
-    }
+        displaySentenceElem.appendChild(wordsElem);
+        
+    });
+
+
+    wordsLengthElem.innerHTML = `Your sentence have: ${words.length} words.`;
 
 }
 
 
 const hideAndHighlight =()=>{
+    
+    displaySentenceElem.innerHTML = " ";
 
     const userWords = sentenceElem.value;
     let addedWords = userWords.split(" ");
-
-    let originalSentence = analyze();
-
-
-    displaySentenceElem.innerHTML = '';
     
     let changeHighlighted = '';
 
@@ -93,5 +82,5 @@ const hideAndHighlight =()=>{
 }
 
 // add event listener on btn to do something onclick
-addBtnElem.addEventListener('click', analyze);
-checkboxElem.addEventListener('click', hideAndHighlight);
+addBtnElem.addEventListener("click", analyze);
+checkboxElem.addEventListener("click", hideAndHighlight);

@@ -27,6 +27,10 @@ ul{
     padding: 0;
 }
 
+li{
+    list-style-type: none;
+}
+
 /*highlight words */
 
 .greaterThanFour{
@@ -40,4 +44,16 @@ ul{
 .longest{
     background-color: #966b9d;
 
+}
+
+.word {
+    margin: 0.1em;
+    padding: 0.2em;
+}
+
+.Legend-colorBox {
+    width: 1.5rem;
+    height: 1.5rem;
+    display: inline-block;
+    /* background-color: #F2B880; */
 }
