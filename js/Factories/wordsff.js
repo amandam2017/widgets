@@ -35,15 +35,13 @@ const Words = () =>{
         }
 
     const LongWord =(words)=>{
-        let longwordOne = '';
-        for (let i = 0; i < words.length; i++) {
-            const eachWord = words[i];
-            if(eachWord.length>longwordOne.length){
-                longwordOne = eachWord.word;
-            }    
-        }
-
-        // const longword = words.filter(word=> word.length === longwordOne.length)
+        // let longwordOne = '';
+        // for (let i = 0; i < words.length; i++) {
+        //     const eachWord = words[i];
+        //     if(eachWord.length>longwordOne.length){
+        //         longwordOne = eachWord.word;
+        //     }    
+        // }
 
         let longestWord = {
             length: 0
@@ -61,6 +59,11 @@ const Words = () =>{
         });
 
         words[longestWord.index].type = "longest";
+
+        const longwords = words.filter(word=> word.length === longestWord.length);
+        console.log(longwords);
+
+        longwords.forEach(word => word.type = "longest");
 
     }
 
