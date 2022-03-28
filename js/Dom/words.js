@@ -19,10 +19,11 @@ let Factory = Words();
 
 const analyze = ()=>{
 
-    let sentence = sentenceElem.value;
+    let enteredSentence = sentenceElem.value;
+
+    let sentence = enteredSentence.replace(/[,.-]/g, '');
 
     const words = Factory.showWords(sentence);
-    // console.log(words);
     const longest = Factory.LongWord(words);
     console.log(longest);
 
@@ -32,17 +33,13 @@ const analyze = ()=>{
     // for each word append an element on the dom 
     // use the type attribute to add a class name which will highlight the appropriate words
     words.forEach(word => {
+
         const wordsElem = document.createElement("span");
         wordsElem.innerHTML = word.word + " ";
         wordsElem.classList.add("word")
         if(word.type.trim()){
             wordsElem.classList.add(word.type);
-
-            // wordsElem.classList.add("longest");
         }
-        // else{
-
-        // }
 
         displaySentenceElem.appendChild(wordsElem);
         

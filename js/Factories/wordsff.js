@@ -4,7 +4,7 @@ const Words = () =>{
         
         // let sentence = getWords(userWords);
         let sentence = words.split(" ");
-        // console.log(sentence);
+        console.log(sentence);
         
         // decupling - Learn to change my array of strings to be an array of objects
         const decoupledSentence = sentence.map(word=>{
@@ -23,7 +23,6 @@ const Words = () =>{
                 for (let i = 0; i < decoupledSentence.length; i++) {
                     let wordCharacter = decoupledSentence[i];
                     wordCharacter =  wordCharacter.word;
-                    // console.log(wordCharacter)
         
                     if(wordCharacter.length>sentenceWords.length){
                         sentenceWords = wordCharacter;
@@ -53,10 +52,11 @@ const Words = () =>{
 
         words.forEach((wordOne, index) => {
             if(wordOne.length>longestWord.length){
-                longestWord = {
-                    length: wordOne.length,
-                    index
-                }
+                longestWord = {...wordOne, index}
+                // longestWord = {
+                //     length: wordOne.length,
+                //     index
+                // }
             }
         });
 
