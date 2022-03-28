@@ -50,32 +50,31 @@ const analyze = ()=>{
 
 }
 
-
 const hideAndHighlight =()=>{
-    
-    displaySentenceElem.innerHTML = " ";
+    displaySentenceElem.innerHTML = "";
+    let enteredSentence = sentenceElem.value;
 
-    const userWords = sentenceElem.value;
-    let addedWords = userWords.split(" ");
-    
-    let changeHighlighted = '';
+    const words = Factory.wordsMoreThanFive(enteredSentence);
+    console.log(words);
+    words.forEach(word => {
 
-        for (let i = 0; i < addedWords.length; i++) {
-            const wordCharacter = addedWords[i];
-
-            if((checkboxElem.checked === true)){
-                    if((wordCharacter.length>5)){
-                        changeHighlighted += `<span class="greaterThanFive">${wordCharacter + " "}</span>`
-
-                    }
+        const wordsElem = document.createElement("span");
+        wordsElem.innerHTML = word.word + " ";
+            if(checkboxElem.checked){
+                console.log(checkboxElem.checked, word);
+                if(word.type.trim() === 'greaterThanFive'){
+                    wordsElem.classList.add(word.type);
+                }
             }
             else{
-                wordCharacter += analyze();
+                word += analyze();
             }
 
-            displaySentenceElem.innerHTML = `${changeHighlighted}`
-            
-    } 
+        displaySentenceElem.appendChild(wordsElem);
+        
+    });
+
+
 }
 
 // add event listener on btn to do something onclick

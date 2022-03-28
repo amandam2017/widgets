@@ -6,7 +6,7 @@ const Words = () =>{
         let sentence = words.split(" ");
         console.log(sentence);
         
-        // decupling - Learn to change my array of strings to be an array of objects
+        // decupling - Learn to change my words of strings to be an words of objects
         const decoupledSentence = sentence.map(word=>{
             return{
                 word,
@@ -50,11 +50,10 @@ const Words = () =>{
 
         words.forEach((wordOne, index) => {
             if(wordOne.length>longestWord.length){
-                longestWord = {...wordOne, index}
-                // longestWord = {
-                //     length: wordOne.length,
-                //     index
-                // }
+                longestWord = {
+                    length: wordOne.length,
+                    index
+                }
             }
         });
 
@@ -67,9 +66,43 @@ const Words = () =>{
 
     }
 
+    const wordsMoreThanFive = (words)=>{  
+        
+        // let sentence = getWords(userWords);
+        let sentence = words.split(" ");
+        console.log(sentence);
+        
+        // decupling - Learn to change my words of strings to be an words of objects
+        const decoupledSentence = sentence.map(word=>{
+            return{
+                word,
+                length: word.length,
+                type: word.length >5 ? "greaterThanFive":" ",
+
+            }
+        })
+ 
+            let sentenceWords = '';
+
+                for (let i = 0; i < decoupledSentence.length; i++) {
+                    let wordCharacter = decoupledSentence[i];
+                    wordCharacter =  wordCharacter.word;
+        
+                    if(wordCharacter.length>sentenceWords.length){
+                        sentenceWords = wordCharacter;
+                    }
+                    
+                }
+
+                return decoupledSentence;
+        
+        }
+
 
     return{
         LongWord,
         showWords,
+        wordsMoreThanFive,
+        // highlighting,
     }
 }
