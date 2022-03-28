@@ -1,8 +1,7 @@
 const Words = () =>{
 
     const showWords = (words)=>{  
-        
-        // let sentence = getWords(userWords);
+ 
         let sentence = words.split(" ");
         console.log(sentence);
         
@@ -35,18 +34,10 @@ const Words = () =>{
         }
 
     const LongWord =(words)=>{
-        // let longwordOne = '';
-        // for (let i = 0; i < words.length; i++) {
-        //     const eachWord = words[i];
-        //     if(eachWord.length>longwordOne.length){
-        //         longwordOne = eachWord.word;
-        //     }    
-        // }
 
         let longestWord = {
             length: 0
         }
-        // console.log(longwordOne);
 
         words.forEach((wordOne, index) => {
             if(wordOne.length>longestWord.length){

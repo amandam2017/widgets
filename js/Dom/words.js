@@ -55,22 +55,28 @@ const hideAndHighlight =()=>{
     let enteredSentence = sentenceElem.value;
 
     const words = Factory.wordsMoreThanFive(enteredSentence);
-    console.log(words);
     words.forEach(word => {
 
-        const wordsElem = document.createElement("span");
+        let wordsElem = document.createElement("span");
         wordsElem.innerHTML = word.word + " ";
+        // console.log(wordsElem.innerHTML);
             if(checkboxElem.checked){
-                console.log(checkboxElem.checked, word);
+  
                 if(word.type.trim() === 'greaterThanFive'){
-                    wordsElem.classList.add(word.type);
+                        // wordsElem.classList.add(word.type);
+
+                    console.log('more than 5 characters'+wordsElem);
+                    displaySentenceElem.appendChild(wordsElem);
+
                 }
             }
             else{
                 word += analyze();
             }
 
-        displaySentenceElem.appendChild(wordsElem);
+            console.log(wordsElem);
+
+        // displaySentenceElem.appendChild(wordsElem);
         
     });
 
