@@ -1,12 +1,11 @@
-const Words = () =>{
+const Words = (sentence) =>{
 
-    const showWords = (words)=>{  
- 
-        let sentence = words.split(" ");
-        console.log(sentence);
+    const words = sentence.split(" ");
+
+    const showWords = ()=>{  
         
-        // decupling - Learn to change my words of strings to be an words of objects
-        const decoupledSentence = sentence.map(word=>{
+        // decoupling - Learn to change my words of strings to be an words of objects
+        const decoupledSentence = words.map(word=>{
             return{
                 word,
                 length: word.length,
@@ -33,7 +32,7 @@ const Words = () =>{
         
         }
 
-    const LongWord =(words)=>{
+    const LongWord =()=>{
 
         let longestWord = {
             length: 0
@@ -57,11 +56,11 @@ const Words = () =>{
 
     }
 
-    const wordsMoreThanFive = (words)=>{  
+    const wordsMoreThanFive = ()=>{  
         
         // let sentence = getWords(userWords);
-        let sentence = words.split(" ");
-        console.log(sentence);
+        // let sentence = words.split(" ");
+        // console.log(sentence);
         
         // decupling - Learn to change my words of strings to be an words of objects
         const decoupledSentence = sentence.map(word=>{
@@ -94,6 +93,5 @@ const Words = () =>{
         LongWord,
         showWords,
         wordsMoreThanFive,
-        // highlighting,
     }
 }

@@ -14,12 +14,14 @@ const longwordsElem = document.querySelector('.longwords');
 const copysentence = 'Hello there! Do you know Amanda Maarman from Stellenbosch';
 const twowords = 'my name is amandamaarman from stellenbosch. My brother name is asandamaarman';
 
+
+let enteredSentence = sentenceElem.value;
+
 //INSTANTIATE FACTORY
-let Factory = Words(); 
+let Factory = Words(enteredSentence); 
 
 const analyze = ()=>{
 
-    let enteredSentence = sentenceElem.value;
 
     let sentence = enteredSentence.replace(/[,.-]/g, '');
 
@@ -32,13 +34,13 @@ const analyze = ()=>{
     // loop over words 
     // for each word append an element on the dom 
     // use the type attribute to add a class name which will highlight the appropriate words
-    words.forEach(word => {
+    words.forEach(igama => {
 
         const wordsElem = document.createElement("span");
-        wordsElem.innerHTML = word.word + " ";
-        wordsElem.classList.add("word")
-        if(word.type.trim()){
-            wordsElem.classList.add(word.type);
+        wordsElem.innerHTML = igama.word + " ";
+        wordsElem.classList.add("wordSpacing")
+        if(igama.type.trim()){
+            wordsElem.classList.add(igama.type);
         }
 
         displaySentenceElem.appendChild(wordsElem);
@@ -62,7 +64,7 @@ const hideAndHighlight =()=>{
         // console.log(wordsElem.innerHTML);
             if(checkboxElem.checked){
   
-                if(word.type.trim() === 'greaterThanFive'){
+                if(word.type.trim() === "greaterThanFive"){
                         // wordsElem.classList.add(word.type);
 
                     console.log('more than 5 characters'+wordsElem);
@@ -73,10 +75,6 @@ const hideAndHighlight =()=>{
             else{
                 word += analyze();
             }
-
-            console.log(wordsElem);
-
-        // displaySentenceElem.appendChild(wordsElem);
         
     });
 
