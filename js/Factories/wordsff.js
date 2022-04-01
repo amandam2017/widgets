@@ -1,23 +1,20 @@
-const Words = (sentence) =>{
+const Words = () =>{
+    // let sentence = words.split(" ");
 
-    const words = sentence.split(" ");
+    const showWords = (words)=>{
 
-    const showWords = ()=>{  
-        
-        // decoupling - Learn to change my words of strings to be an words of objects
-        const decoupledSentence = words.map(word=>{
+        let sentence = words.split(" ");
+
+        // decupling - Learn to change my words of strings to be an words of objects
+        const decoupledSentence = sentence.map(word=>{
             return{
                 word,
                 length: word.length,
                 type: word.length >4 ? "greaterThanFour":" ",
-
             }
         })
-        
-        // console.log(decoupledSentence);
  
             let sentenceWords = '';
-
                 for (let i = 0; i < decoupledSentence.length; i++) {
                     let wordCharacter = decoupledSentence[i];
                     wordCharacter =  wordCharacter.word;
@@ -27,12 +24,11 @@ const Words = (sentence) =>{
                     }
                     
                 }
-
                 return decoupledSentence;
         
         }
 
-    const LongWord =()=>{
+    const LongWord =(words)=>{
 
         let longestWord = {
             length: 0
@@ -46,21 +42,15 @@ const Words = (sentence) =>{
                 }
             }
         });
-
         words[longestWord.index].type = "longest";
-
         const longwords = words.filter(word=> word.length === longestWord.length);
         console.log(longwords);
-
         longwords.forEach(word => word.type = "longest");
-
     }
+    const wordsMoreThanFive = (words)=>{  
 
-    const wordsMoreThanFive = ()=>{  
-        
-        // let sentence = getWords(userWords);
-        // let sentence = words.split(" ");
-        // console.log(sentence);
+        let sentence = words.split(" ");
+        console.log(sentence);
         
         // decupling - Learn to change my words of strings to be an words of objects
         const decoupledSentence = sentence.map(word=>{
@@ -68,12 +58,10 @@ const Words = (sentence) =>{
                 word,
                 length: word.length,
                 type: word.length >5 ? "greaterThanFive":" ",
-
             }
         })
  
             let sentenceWords = '';
-
                 for (let i = 0; i < decoupledSentence.length; i++) {
                     let wordCharacter = decoupledSentence[i];
                     wordCharacter =  wordCharacter.word;
@@ -83,15 +71,13 @@ const Words = (sentence) =>{
                     }
                     
                 }
-
                 return decoupledSentence;
         
         }
-
-
     return{
         LongWord,
         showWords,
         wordsMoreThanFive,
+        // highlighting,
     }
 }
